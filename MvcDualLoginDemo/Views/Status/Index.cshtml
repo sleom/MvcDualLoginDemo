@@ -1,0 +1,40 @@
+﻿@model MvcDualLoginDemo.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Login Status</title>
+    </head>
+    <body>
+        <div>
+            <h3>Logged in user: @ViewBag.UserName</h3>  
+        </div>
+        <p></p>
+        <div>
+            @using (Html.BeginForm("LogIn", "Account", new { IsPrimary = false }))
+            {
+                <fieldset>
+                    <legend>Secondary Login Form</legend>
+                    <ol>
+                        <li>
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName)
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password)
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </li>
+                    </ol>
+                    <input type="submit" value="Log in" />
+                </fieldset>
+            }
+        </div>
+    </body>
+</html>
